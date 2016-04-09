@@ -7,9 +7,11 @@ import com.twitter.util.Await
 object Main {
 	def main(args: Array[String]): Unit = {
 		val client: Service[Request, Response] =
-			Http.newService("www.google.com:80")
+			Http.newService("example.com:80")
 
-		val server = Http.serve(":8080", client)
+		val server = Http.serve("localhost:8080", client)
+		Thread.sleep(100000)
+		server.close()
 		Await.ready(server)
 	}
 }

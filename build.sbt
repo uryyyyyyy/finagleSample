@@ -4,6 +4,8 @@ version := "1.0"
 
 lazy val akkaVersion = "2.3.14"
 
+resolvers += "twitter-repo" at "https://maven.twttr.com"
+
 lazy val commonSettings = Seq(
 	organization := "com.github.uryyyyyyy",
 	scalaVersion := "2.11.7",
@@ -13,4 +15,7 @@ lazy val commonSettings = Seq(
 )
 
 lazy val http = (project in file("http")).
+		settings(commonSettings: _*)
+
+lazy val thread = (project in file("thread")).
 		settings(commonSettings: _*)
